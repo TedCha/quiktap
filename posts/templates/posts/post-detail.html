@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="card mt-4 mb-4">
+        <div class="card-header">
+            {{ post.author }}
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{ post.text_content }}</p>
+        </div>
+        <div class="card-footer">
+        Posted: {{ post.posted_date|date:'m/d/y - h:i a' }}
+        <small">Last Modified: {{ post.last_edited_date|date:'m/d/y - h:i a' }}</small> 
+        </div>
+    </div>
+</div>
+{% endblock content %}
