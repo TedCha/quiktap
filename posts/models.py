@@ -12,12 +12,7 @@ class Post(models.Model):
         blank=True,
         null=True
         )
-    likes = models.ManyToManyField(
-        User,
-        related_name='post_likes',
-        blank=True,
-        null=True
-        )
+    likes = models.ManyToManyField(User, related_name='post_likes', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     posted_date = models.DateTimeField(auto_now_add=True)
     last_edited_date = models.DateTimeField(auto_now=True)
