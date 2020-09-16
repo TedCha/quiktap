@@ -8,7 +8,7 @@ class Post(models.Model):
     """
     text_content = models.CharField(max_length=160)
     image_content = models.ImageField(
-        upload_to='images/',
+        upload_to='post_images',
         blank=True,
         null=True
         )

@@ -2,5 +2,21 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <h1>{{ user.username }}</h1>
+    <div class="card">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{ user.profile.image.url }}" class="card-img">
+          </div>
+          <div class="col-md-8">
+              <div class="card-body">
+                  <h5 class="card-title">{{ user.username }}</h5>
+                  {% if user.profile.bio %}
+                    <p class="card-text">{{ user.profile.bio }}</p> 
+                  {% else %}
+                    <p class="card-text"></p>
+                  {% endif %}
+              </div>
+          </div>
+        </div>
+    </div>
 {% endblock content %}
