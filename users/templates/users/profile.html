@@ -19,4 +19,19 @@
           </div>
         </div>
     </div>
+    <div class="card mt-2">
+      <div class="card-body">
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group">
+              <legend class="border-bottom mb-4">Profile Info</legend>
+              {{ user_form|crispy }}
+              {{ profile_form|crispy }}
+          </div>
+          <div class="form-group">
+              <button class="btn btn-outline-primary" type="submit">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
 {% endblock content %}
