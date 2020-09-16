@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
     <div class="card mt-4 mb-4">
         <div class="card-header">
             {{ post.author }}
@@ -14,20 +13,19 @@
             <small">Last Modified: {{ post.last_edited_date|date:'m/d/y - h:i a' }}</small> 
         </div>
     </div>
-</div>
-<div class="container">
-    {% if post.comments.all %}
-        {% for comment in post.comments.all %}
-        <p>{{ comment }}</p>
-        <p>
-            <small>
-                Posted: {{ comment.posted_date|date:'m/d/y - h:i a' }}
-                Last Modified: {{ comment.last_edited_date|date:'m/d/y - h:i a' }}
-            </small>
-        </p>
-        {% endfor %}
-    {% else %}
-        <p>Share your thoughts!</p>
-    {% endif %}
-</div>
+    <div class="container">
+        {% if post.comments.all %}
+            {% for comment in post.comments.all %}
+            <p>{{ comment }}</p>
+            <p>
+                <small>
+                    Posted: {{ comment.posted_date|date:'m/d/y - h:i a' }}
+                    Last Modified: {{ comment.last_edited_date|date:'m/d/y - h:i a' }}
+                </small>
+            </p>
+            {% endfor %}
+        {% else %}
+            <p>Share your thoughts!</p>
+        {% endif %}
+    </div>
 {% endblock content %}

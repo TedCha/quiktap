@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
+    <!-- Title -->
     <title>QuikTap</title>
   </head>
   <body>
@@ -19,10 +20,27 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav mr-auto">
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'posts-front-page' %}">Feed</a>
               </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+              {% if user.is_authenticated %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'register' %}">Register</a>
+                </li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -30,18 +48,35 @@
     <!-- End Nav -->
 
     <!-- Content -->
-    <div class="container-fluid">
-        {% if messages %}
-          {% for message in messages %}
-            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-              {{ message }}
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-          {% endfor %}
-        {% endif %}
-        {% block content %}{% endblock content%}
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-8">
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            {% endfor %}
+          {% endif %}
+          {% block content %}{% endblock content%}
+        </div>
+        <div class="col-md-4">
+          <div>
+            <h3>Sidebar</h3>
+            <p class='text-muted'>You can put any information here you'd like.
+              <ul class="list-group">
+                <li class="list-group-item list-group-item-light">Latest Posts</li>
+                <li class="list-group-item list-group-item-light">Announcements</li>
+                <li class="list-group-item list-group-item-light">Calendars</li>
+                <li class="list-group-item list-group-item-light">etc</li>
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
     <!-- End Content -->
 
