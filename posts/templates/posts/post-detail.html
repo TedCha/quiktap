@@ -1,16 +1,26 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="card mt-4 mb-4">
-        <div class="card-header">
-            {{ post.author }}
-        </div>
-        <div class="card-body">
-            <p class="card-text">{{ post.text_content }}</p>
-        </div>
-        <div class="card-footer">
-            <small class="float-left">Posted: {{ post.posted_date|date:'m/d/y - h:i a' }}</small>
-            <small class="float-right">Last Modified: {{ post.last_edited_date|date:'m/d/y - h:i a' }}</small> 
+    <div class="card mb-4">
+        <div class="row no-gutters">
+            <div class="col-md-2">
+                <img src="{{ post.author.profile.image.url }}" alt="" class="card-img">
+            </div>
+            <div class="col-md-10">
+                <div class="card-header">
+                    <a class="card-title">{{ post.author }}</a>
+                    <small>{{ post.posted_date|date:'M d, Y' }}</small>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ post.text_content }}</p>
+                </div>
+                {% if post.author == user %}
+                <div class="card-footer">
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' post.id %}">Edit</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1 float-right" href="{% url 'post-delete' post.id %}">Delete</a>
+                </div>
+                {% endif %}
+            </div>
         </div>
     </div>
     <div class="container">
