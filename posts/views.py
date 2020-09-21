@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.models import User
 from django.views import generic
 
 from .models import Post
@@ -9,15 +10,41 @@ from .forms import PostModelForm
 class PostListView(generic.ListView):
     """
     Generic ListView for the front page/feed of a user.
-    Displays the last 10 posts.
     """
     model = Post
     template_name = 'posts/front-page.html'
     context_object_name = 'posts'
+    paginate_by = 5
 
     def get_queryset(self):
-        """Return the last ten posts."""
-        return Post.objects.order_by('-posted_date')[:10]
+        """Return posts in queryset by newest posted_date."""
+        return Post.objects.order_by('-posted_date')
+
+
+class UserPostListView(generic.ListView):
+    """
+    Generic ListView for the displaying all the posts of a
+    specific user.
+    """
+    model = Post
+    template_name = 'posts/user-posts.html'
+    context_object_name = 'posts'
+    paginate_by = 5
+
+    def get_queryset(self):
+        """
+        Return queryset of specific user. User is identified through
+        kwargs in url.
+        """
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        return Post.objects.filter(author=user).order_by('-posted_date')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        user = get_object_or_404(User, username=self.kwargs.get('username'))
+        user_info = User.objects.get(username=user)
+        context['user_info'] = user_info
+        return context
 
 
 class PostDetailView(generic.DetailView):
