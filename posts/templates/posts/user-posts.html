@@ -4,7 +4,7 @@
     <div class="card mb-4">
         <div class="row no-gutters">
             <div class="col-md-4 align-self-center">
-                <img src="{{ user_info.profile.image.url }}" class="card-img">
+                <img src="{{ user_info.profile.image.url }}" class="card-img profile-user-image-thumbnail">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -25,20 +25,14 @@
     </div>
     {% for post in posts %}
         <div class="card mb-4">
-            <div class="card-header">
+            <div class="card-header p-2">
+                <img src="{{ post.author.profile.image.url }}" alt="" class="card-img post-user-image-thumbnail">
                 <a class="card-title" href="{% url 'user-posts' post.author %}">{{ post.author }}</a>
                 <small>{{ post.posted_date|date:'M d, Y' }}</small>
             </div>
-            <a href="{% url 'post-detail' post.id %}">
-                <div class="row no-gutters">
-                    <div class="col-md-2 align-self-center">
-                        <img src="{{ post.author.profile.image.url }}" alt="" class="card-img">
-                    </div>
-                    <div class="col-md-10">
-                        <div class="card-body">
-                            <p class="card-text">{{ post.text_content }}</p>
-                        </div>
-                    </div>
+            <a class="post-text" href="{% url 'post-detail' post.id %}">
+                <div class="card-body">
+                    <p class="card-text">{{ post.text_content }}</p>
                 </div>
             </a>
         </div>

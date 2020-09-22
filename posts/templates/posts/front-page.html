@@ -3,20 +3,14 @@
 {% block content %}
     {% for post in posts %}
         <div class="card mb-4">
-            <div class="card-header">
+            <div class="card-header p-2">
+                <img src="{{ post.author.profile.image.url }}" alt="" class="card-img post-user-image-thumbnail">
                 <a class="card-title" href="{% url 'user-posts' post.author %}">{{ post.author }}</a>
                 <small>{{ post.posted_date|date:'M d, Y' }}</small>
             </div>
             <a class="post-text" href="{% url 'post-detail' post.id %}">
-                <div class="row no-gutters">
-                    <div class="col-md-2 align-self-center">
-                        <img src="{{ post.author.profile.image.url }}" alt="" class="card-img user-image-thumbnail m-2 ">
-                    </div>
-                    <div class="col-md-10">
-                        <div class="card-body">
-                            <p class="card-text">{{ post.text_content }}</p>
-                        </div>
-                    </div>
+                <div class="card-body">
+                    <p class="card-text">{{ post.text_content }}</p>
                 </div>
             </a>
         </div>
