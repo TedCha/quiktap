@@ -13,10 +13,11 @@ body::-webkit-scrollbar {
 .post-text {
     text-decoration: none !important;
     color: black;
+    transition: background-color 0.25s ease;
 }
 
 .post-text:hover {
-    background-color: rgba(196, 197, 214, 0.15);
+    background-color: rgba(123, 130, 255, 0.15);
 }
 
 .post-user-image-thumbnail {
