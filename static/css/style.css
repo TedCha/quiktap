@@ -1,0 +1,24 @@
+body {
+    background-color: #edf2f4;
+}
+
+#navbar-custom {
+    background-color: #2b2d42;
+}
+
+.post-text {
+    text-decoration: none !important;
+    color: black;
+}
+
+.post-text:hover {
+    background-color: rgba(196, 197, 214, 0.15);
+}
+
+.user-image-thumbnail {
+    max-width: 100px;
+    border-radius: 50%;
+    background-color: white;
+    border: 2px;
+    object-fit: cover;
+}

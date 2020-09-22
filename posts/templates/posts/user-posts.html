@@ -3,7 +3,7 @@
 {% block content %}
     <div class="card mb-4">
         <div class="row no-gutters">
-            <div class="col-md-4">
+            <div class="col-md-4 align-self-center">
                 <img src="{{ user_info.profile.image.url }}" class="card-img">
             </div>
             <div class="col-md-8">
@@ -15,30 +15,32 @@
                         <p class="card-text"></p>
                     {% endif %}
                 </div>
-                {% if view.kwargs.username == user.username %}
-                    <div class="card-footer">
-                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'profile' %}">Edit Profile</a>
-                    </div>
-                {% endif %}
             </div>
         </div>
+        {% if view.kwargs.username == user.username %}
+        <div class="card-footer">
+            <a class="btn btn-secondary btn-sm mt-1 mb-1 float-right" href="{% url 'profile' %}">Edit Profile</a>
+        </div>
+        {% endif %}
     </div>
     {% for post in posts %}
         <div class="card mb-4">
-            <div class="row no-gutters">
-                <div class="col-md-2">
-                    <img src="{{ post.author.profile.image.url }}" alt="" class="card-img">
-                </div>
-                <div class="col-md-10">
-                    <div class="card-header">
-                        <a class="card-title" href="{% url 'user-posts' post.author %}">{{ post.author }}</a>
-                        <small>{{ post.posted_date|date:'M d, Y' }}</small>
-                    </div>
-                    <div class="card-body">
-                        <p class="card-text"><a href="{% url 'post-detail' post.id %}">{{ post.text_content }}</a></p>
-                    </div>
-                </div>
+            <div class="card-header">
+                <a class="card-title" href="{% url 'user-posts' post.author %}">{{ post.author }}</a>
+                <small>{{ post.posted_date|date:'M d, Y' }}</small>
             </div>
+            <a href="{% url 'post-detail' post.id %}">
+                <div class="row no-gutters">
+                    <div class="col-md-2 align-self-center">
+                        <img src="{{ post.author.profile.image.url }}" alt="" class="card-img">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card-body">
+                            <p class="card-text">{{ post.text_content }}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
         </div>
     {% endfor %}
     {% if is_paginated %}
