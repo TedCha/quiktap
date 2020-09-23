@@ -1,1 +1,1 @@
-web: quiktap.wsgi
+web: gunicorn quiktap.wsgi
