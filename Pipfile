@@ -9,6 +9,8 @@ verify_ssl = true
 django = "~=3.0.7"
 django-crispy-forms = "*"
 django-cleanup = "*"
+boto3 = "*"
+django-storages = "*"
 
 [requires]
 python_version = "3.8"

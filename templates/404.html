@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="alert alert-info">
+        Uh oh! Seems like you took a wrong turn. (Or the site admin messed something up!)
+    </div>
+    <div class="border-top pt-3 pb-3">
+        <a class="ml-2" href="{% url 'posts-front-page' %}">Go Back to Feed</a>
+    </div>
+{% endblock content %}
