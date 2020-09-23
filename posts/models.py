@@ -8,12 +8,6 @@ class Post(models.Model):
     Model for Posts.
     """
     text_content = models.CharField(max_length=160)
-    image_content = models.ImageField(
-        upload_to='post_images',
-        blank=True,
-        null=True
-        )
-    likes = models.ManyToManyField(User, related_name='post_likes', blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     posted_date = models.DateTimeField(auto_now_add=True)
     last_edited_date = models.DateTimeField(auto_now=True)
@@ -41,3 +35,6 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text_content
+
+    def get_absolute_url(self):
+        return reverse('post-detail', kwargs={'pk': self.post.pk})

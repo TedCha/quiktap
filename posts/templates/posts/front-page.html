@@ -12,6 +12,9 @@
                 <div class="card-body">
                     <p class="card-text">{{ post.text_content }}</p>
                 </div>
+                <div class="card-footer">
+                    Comments: {{ post.comments.count }}
+                </div>
             </a>
         </div>
     {% endfor %}

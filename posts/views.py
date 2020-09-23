@@ -1,10 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views import generic
 
-from .models import Post
-from .forms import PostModelForm
+from .models import Post, Comment
+from .forms import PostModelForm, CommentModelForm
 
 
 class PostListView(generic.ListView):
@@ -70,7 +70,7 @@ class PostCreateView(LoginRequiredMixin, generic.CreateView):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     """
-    Generic CreateView for users to create posts.
+    Generic CreateView for users to update posts.
     """
     model = Post
     template_name = 'posts/post-form.html'
@@ -89,7 +89,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
     """
-    Generic DeleteView for posts.
+    Generic DeleteView for users to delete posts.
     """
     model = Post
     template_name = 'posts/post-delete.html'
@@ -100,3 +100,18 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView
         if self.request.user == post.author:
             return True
         return False
+
+
+class CommentCreateView(LoginRequiredMixin, generic.CreateView):
+    """
+    Generic CreateView for users to create comments.
+    """
+    model = Comment
+    template_name = 'posts/comment-form.html'
+    form_class = CommentModelForm
+
+    def form_valid(self, form):
+        post = get_object_or_404(Post, id=self.kwargs.get('pk'))
+        form.instance.post = post
+        form.instance.author = self.request.user
+        return super().form_valid(form)
