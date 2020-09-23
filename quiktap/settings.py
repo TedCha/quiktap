@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'h$gum40%1=&h#_i_-kr@k+9!3ba=$wnir4+0%js%s9xss&+a3j'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG_VALUE')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['quiktap.herokuapp.com']
 
 
 # Application definition
@@ -144,8 +144,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('GMAIL_USERNAME')
-EMAIL_HOST_PASSWORD = os.environ.get('GMAIL_APP_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('HOST_USERNAME')
+EMAIL_HOST_PASSWORD = os.environ.get('HOST_APP_PASSWORD')
 
 # S3 Media Storage Settings Variables
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
