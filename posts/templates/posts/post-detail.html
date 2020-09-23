@@ -29,6 +29,12 @@
                             </small>
                         </p>
                     </div>
+                    {% if comment.author == user %}
+                        <div class="card-footer">
+                            <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'comment-update' comment.id %}">Edit</a>
+                            <a class="btn btn-danger btn-sm mt-1 mb-1 float-right" href="{% url 'comment-delete' comment.id %}">Delete</a>
+                        </div>
+                    {% endif %}
                 </div>
             {% endfor %}
         {% else %}

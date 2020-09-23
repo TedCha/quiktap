@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, reverse
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views import generic
@@ -115,3 +115,41 @@ class CommentCreateView(LoginRequiredMixin, generic.CreateView):
         form.instance.post = post
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
+    """
+    Generic CreateView for users to update comments.
+    """
+    model = Comment
+    template_name = 'posts/comment-form.html'
+    form_class = CommentModelForm
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        comment = self.get_object()
+        if self.request.user == comment.author:
+            return True
+        return False
+
+
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
+    """
+    Generic DeleteView for users to delete comments.
+    """
+    model = Comment
+    template_name = 'posts/comment-delete.html'
+    success_url = '/'
+
+    def test_func(self):
+        comment = self.get_object()
+        if self.request.user == comment.author:
+            return True
+        return False
+
+    def get_success_url(self):
+        post = self.object.post.id
+        return reverse('post-detail', kwargs={'pk': post})
