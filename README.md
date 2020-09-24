@@ -91,7 +91,7 @@ The website should now be available at `localhost` (*Note: Django defaults to ht
 
 ## Development
 
-If you would like to take the website and develop it further, please feel free to create a local instance of the website using the guide above!
+If you would like to use the website and develop it further, please feel free to create a local instance of the website using the guide above!
 
 ### Dependencies
 The required dependencies can be installed from the Pipfile, but a list of dependencies can be seen below:
@@ -141,7 +141,7 @@ User Profile:
 A big thank you to [Corey Schafer](https://www.youtube.com/c/Coreyms). 
 His [Django Tutorials](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) are absolutly amazing and were used as reference during the entire development process.
 
-Also a big thank you to all of the dependency authors/contributors. Their packages make development in Django and absolute breeze.
+Also, a big thank you to all of the dependency authors/contributors. Their packages made development in Django and absolute breeze.
 
 ## License
 MIT License
