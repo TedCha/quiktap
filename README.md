@@ -28,7 +28,7 @@ Topics I learned more about and got to work with during development:
 * Django Function Based Views
 * Django Class Based Views
 * Postgres Database Setup
-* S3 Media Server for Image Uploads
+* AWS S3 Bucket for Image Storage
 * Heroku Deployment
 
 It was a lot of fun delving into Django and getting a better understanding of it's inner workings.
@@ -39,7 +39,7 @@ It was a lot of fun delving into Django and getting a better understanding of it
 
 ### Heroku Instance
 
-Click [here](https://quiktap.herokuapp.com/) to visit the Heroku instance I setup.
+Click [here](https://quiktap.herokuapp.com/) to visit the Heroku instance.
 
 ### Local Instance
 
@@ -88,6 +88,8 @@ python manage.py runserver
 ```
 
 The website should now be available at `localhost` (*Note: Django defaults to http://127.0.0.1:8000/*).
+
+You will have to change some of the variables in settings.py as they are set to my local Environment Variables.
 
 ## Development
 
@@ -141,7 +143,7 @@ User Profile:
 A big thank you to [Corey Schafer](https://www.youtube.com/c/Coreyms). 
 His [Django Tutorials](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) are absolutly amazing and were used as reference during the entire development process.
 
-Also, a big thank you to all of the dependency authors/contributors. Their packages made development in Django and absolute breeze.
+Also, a big thank you to all of the dependency authors/contributors. Their packages made development in Django an absolute breeze.
 
 ## License
 MIT License
