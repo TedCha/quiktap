@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'django_cleanup.apps.CleanupConfig',
     'storages',
+    'imagekit',
 ]
 
 MIDDLEWARE = [

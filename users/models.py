@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 
 
 class Profile(models.Model):
@@ -8,9 +10,12 @@ class Profile(models.Model):
     relationship alongside of a profile image and bio.
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = models.ImageField(
+    image = ProcessedImageField(
+        upload_to='profile_images',
         default='profile_image_default.jpeg',
-        upload_to='profile_images'
+        processors=[ResizeToFill(300, 300)],
+        format='JPEG',
+        options={'quality': 60}
     )
     bio = models.TextField(blank=True, null=True)
 
