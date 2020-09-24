@@ -4,15 +4,42 @@ QuikTap is a twitter-like web application developed with Django. The concept of 
 
 ## About
 
-This project is my second time delving into the wonderful Django framework. 
+This project is my second time delving into the wonderful Django framework.
+
+I developed the following components for the website:
+* Post Feed
+* Posts
+* Comments
+* Profiles
+* CRUD Abilities (For Posts, Comments, and Profiles)
+* User Registration
+* User Authentication
+
+Topics I learned more about and got to work with during development:
+* Django Migrations
+* Django Forms
+* Django Apps
+* Django URL Routing/Patterns
+* Django Views
+* Django Pagination
+* Django Signals
+* Templates
+* Bootstrap4 Implementation
+* Django Function Based Views
+* Django Class Based Views
+* Postgres Database Setup
+* S3 Media Server for Image Uploads
+* Heroku Deployment
+
+It was a lot of fun delving into Django and getting a better understanding of it's inner workings.
 
 ## Usage
 
-There's two ways to view/use the website.
+**There are two ways to view/use the website:**
 
 ### Heroku Instance
 
-Click [here](https://quiktap.herokuapp.com/) to visit the Heroku instance I have setup.
+Click [here](https://quiktap.herokuapp.com/) to visit the Heroku instance I setup.
 
 ### Local Instance
 
@@ -111,4 +138,30 @@ User Profile:
 
 ## Credit/Acknowledgment
 
+A big thank you to [Corey Schafer](https://www.youtube.com/c/Coreyms). 
+His [Django Tutorials](https://www.youtube.com/playlist?list=PL-osiE80TeTtoQCKZ03TU5fNfx2UY6U4p) are absolutly amazing and were used as reference during the entire development process.
+
+Also a big thank you to all of the dependency authors/contributors. Their packages make development in Django and absolute breeze.
+
 ## License
+MIT License
+
+Copyright (c) 2020 Ted
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
