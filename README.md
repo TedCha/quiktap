@@ -35,12 +35,6 @@ It was a lot of fun delving into Django and getting a better understanding of it
 
 ## Usage
 
-**There are two ways to view/use the website:**
-
-### Heroku Instance
-
-Click [here](https://quiktap.herokuapp.com/) to visit the Heroku instance.
-
 ### Local Instance
 
 To use the website on your own local instance, follow the instructions below.
